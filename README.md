@@ -17,3 +17,5 @@ Requires [Janet](https://www.github.com/janet-lang/janet) and [JPM](https://www.
 5. To make `janet-termios` available as a Janet dependency anywhere on your system, run `$ jpm install` (on Ubuntu and similar systems, may required elevated permissions, e.g. `$ sudo jpm install`)
 
 Now janet-termios can be imported at the Janet REPL or in a Janet source file using `(import janet-termios)`.
+
+Alternately, just follow the Getting Started instructions in [Joule editor](https://www.github.com/CFiggers/joule-editor). This library will be automatically fetched, built, and installed during the `$ jpm deps` step.
