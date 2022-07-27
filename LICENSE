@@ -2,9 +2,9 @@ MIT License
 
 Copyright (c) 2022 Caleb Figgers
 
-Inspiration taken from ahungry/com.ahungry.io, which is Copyright (c) 2020-2021 Matthew Carter m@ahungry.com
+Inspiration taken from [ahungry/com.ahungry](https://www.github.com/ahungry/com.ahungry).io, which is Copyright (c) 2020-2021 Matthew Carter <m at ahungry dot com>.
 
-Inspiration taken from snaptoken/kilo-tutorial, which is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), except for source code [originally written](https://github.com/antirez/kilo) by Salvatore Sanfilippo (aka [antirez](https://github.com/antirez)) and released under the BSD 2-clause license Copyright, which is also (c) 2016, Salvatore Sanfilippo <antirez at gmail dot com>.
+Inspiration taken from [snaptoken/kilo-tutorial](https://www.github.com/snaptoken/kilo-tutorial), which is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), except for source code [originally written](https://github.com/antirez/kilo) by Salvatore Sanfilippo (aka [antirez](https://github.com/antirez)) and released under the BSD 2-clause license Copyright, which is also (c) 2016, Salvatore Sanfilippo <antirez at gmail dot com>.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
