@@ -35,7 +35,11 @@ enum editorKey
     PAGE_DOWN,
     HOME_KEY,
     END_KEY,
-    DEL_KEY
+    DEL_KEY,
+    ARROW_CTRL_LEFT,
+    ARROW_CTRL_RIGHT,
+    ARROW_CTRL_UP,
+    ARROW_CTRL_DOWN
 };
 
 /*** terminal ***/
@@ -105,7 +109,7 @@ int read_key()
 
     if (c == '\x1b')
     {
-        char seq[3];
+        char seq[5];
         if (read(STDIN_FILENO, &seq[0], 1) != 1)
             return '\x1b';
         if (read(STDIN_FILENO, &seq[1], 1) != 1)
@@ -134,6 +138,26 @@ int read_key()
                         return HOME_KEY;
                     case '8':
                         return END_KEY;
+                    }
+                } 
+                else 
+                {
+                    if (read(STDIN_FILENO, &seq[3], 1) != 1) {
+                        return '\x1b';
+                    }
+                    if (read(STDIN_FILENO, &seq[4], 1) != 1) {
+                        return '\x1b';
+                    }
+                    switch (seq[4])
+                    {
+                        case 'A':
+                            return ARROW_CTRL_UP;
+                        case 'B': 
+                            return ARROW_CTRL_DOWN;
+                        case 'C': 
+                            return ARROW_CTRL_RIGHT;
+                        case 'D': 
+                            return ARROW_CTRL_LEFT;
                     }
                 }
             }
