@@ -39,7 +39,11 @@ enum editorKey
     ARROW_CTRL_LEFT,
     ARROW_CTRL_RIGHT,
     ARROW_CTRL_UP,
-    ARROW_CTRL_DOWN
+    ARROW_CTRL_DOWN,
+    ARROW_SHIFT_LEFT,
+    ARROW_SHIFT_RIGHT,
+    ARROW_SHIFT_UP,
+    ARROW_SHIFT_DOWN
 };
 
 /*** terminal ***/
@@ -148,16 +152,30 @@ int read_key()
                     if (read(STDIN_FILENO, &seq[4], 1) != 1) {
                         return '\x1b';
                     }
-                    switch (seq[4])
-                    {
-                        case 'A':
-                            return ARROW_CTRL_UP;
-                        case 'B': 
-                            return ARROW_CTRL_DOWN;
-                        case 'C': 
-                            return ARROW_CTRL_RIGHT;
-                        case 'D': 
-                            return ARROW_CTRL_LEFT;
+                    if (seq[3] == '2'){
+                        switch (seq[4])
+                        {
+                            case 'A':
+                                return ARROW_SHIFT_UP;
+                            case 'B': 
+                                return ARROW_SHIFT_DOWN;
+                            case 'C': 
+                                return ARROW_SHIFT_RIGHT;
+                            case 'D': 
+                                return ARROW_SHIFT_LEFT;
+                        }
+                    } else if (seq[3] == '5'){
+                        switch (seq[4])
+                        {
+                            case 'A':
+                                return ARROW_CTRL_UP;
+                            case 'B': 
+                                return ARROW_CTRL_DOWN;
+                            case 'C': 
+                                return ARROW_CTRL_RIGHT;
+                            case 'D': 
+                                return ARROW_CTRL_LEFT;
+                        }
                     }
                 }
             }
