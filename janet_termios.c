@@ -15,14 +15,7 @@
 /*** defines ***/
 
 #ifndef _WIN32
-struct world_atom
-{
-    struct termios orig_termios;
-};
-
-typedef struct world_atom world_atom;
-
-world_atom world;
+static JANET_THREAD_LOCAL struct termios world;
 #endif
 
 enum editorKey
@@ -51,7 +44,7 @@ enum editorKey
 void disable_raw_mode()
 {
 #ifndef _WIN32
-    if (-1 == tcsetattr(STDIN_FILENO, TCSAFLUSH, &world.orig_termios))
+    if (-1 == tcsetattr(STDIN_FILENO, TCSAFLUSH, &world))
         fprintf(stderr, "tcsetattr");
 #endif
 };
@@ -59,11 +52,11 @@ void disable_raw_mode()
 void enable_raw_mode()
 {
 #ifndef _WIN32
-    if (-1 == tcgetattr(STDIN_FILENO, &world.orig_termios))
+    if (-1 == tcgetattr(STDIN_FILENO, &world))
         fprintf(stderr, "tcgetattr");
     atexit(disable_raw_mode);
 
-    struct termios raw = world.orig_termios;
+    struct termios raw = world;
     raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
     raw.c_oflag &= (OPOST);
     raw.c_cflag |= (CS8);
