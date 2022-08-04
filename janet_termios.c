@@ -36,7 +36,8 @@ enum editorKey
     ARROW_SHIFT_LEFT,
     ARROW_SHIFT_RIGHT,
     ARROW_SHIFT_UP,
-    ARROW_SHIFT_DOWN
+    ARROW_SHIFT_DOWN,
+    SHIFT_DEL
 };
 
 /*** terminal ***/
@@ -156,6 +157,8 @@ int read_key()
                                 return ARROW_SHIFT_RIGHT;
                             case 'D': 
                                 return ARROW_SHIFT_LEFT;
+                            case '~':
+                                return SHIFT_DEL;
                         }
                     } else if (seq[3] == '5'){
                         switch (seq[4])
